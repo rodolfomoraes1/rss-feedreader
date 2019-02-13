@@ -52,8 +52,6 @@ $(function() {
     });
 
     describe('Initial Entries', function(){
-        var feed = $('.feed');
-
         beforeEach(function(done){
             loadFeed(0, function(){
                 done();
@@ -61,32 +59,30 @@ $(function() {
         });
 
         it('there is at least a single feed', function(done){
-            expect(feed[0].childElementCount).toBeGreaterThan(0);
+            expect($('.feed .entry')[0]).toBeDefined();
+            //expect($('.feed')[0].childElementCount).toBeGreaterThan(0);
             done();
         });
     });
 
     describe('New Feed Selection', function(){
         var feed = $('.feed'),
-            entriesStart,
-            entriesEnd;
+            firstFeed,
+            secondFeed;
 
         beforeEach(function(done){
-            loadFeed(0, function() {
-                entriesStart = feed.find(allFeeds.name);
-                done();
+            loadFeed(1, function() {
+                firstFeed = feed.find(allFeeds.name);
+                loadFeed(2, function() {
+                    secondFeed = feed.find(allFeeds.name);
+                    done();
+                });
             });
         });
 
-        afterEach(function() {
-            loadFeed(1, function() {
-                entriesEnd = feed.find(allFeeds.name);
-                done();
-            })
-        });
-
-        it('new feed is different to old one', function () {
-            expect(entriesStart).not.toBe(entriesEnd);
+        it('new feed is different to old one', function (done) {
+            expect(firstFeed).not.toBe(secondFeed);
+            done();
         });
     });
 }());
