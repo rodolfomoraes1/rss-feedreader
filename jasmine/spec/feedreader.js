@@ -89,4 +89,13 @@ $(function() {
             expect(entriesStart).not.toBe(entriesEnd);
         });
     });
+
+    describe('Defined variables', function() {
+        it('are defined', function () {
+          expect(allFeeds).toBeDefined();
+          expect(allFeeds.length).not.toBe(0);
+        });
+    });
+
+
 }());
