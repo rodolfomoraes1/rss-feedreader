@@ -1,5 +1,5 @@
 # RSS feeds reader
-The goal of this project is to develop test suite for the RSS feed reader using Jasmine.
+The goal of this project is to develop a test suite for the RSS feed reader using Jasmine.
 
 ## Table of Contents
 
